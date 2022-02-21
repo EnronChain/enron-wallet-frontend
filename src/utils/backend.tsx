@@ -528,9 +528,6 @@ export async function callSendAphoton(
 
 export async function undelegateAphoton(dest: string, amount: string) {
     let algo = 'ethsecp256k1';
-    if (isKeplr()) {
-        algo = 'secp256k1';
-    }
     const response = await fetch(`${REACT_APP_BACKEND_URL}/undelegate/`, {
         method: 'POST',
         headers: {
@@ -561,9 +558,6 @@ export async function undelegateAphoton(dest: string, amount: string) {
 
 export async function delegateAphoton(dest: string, amount: string) {
     let algo = 'ethsecp256k1';
-    if (isKeplr()) {
-        algo = 'secp256k1';
-    }
     const response = await fetch(`${REACT_APP_BACKEND_URL}/delegate/`, {
         method: 'POST',
         headers: {
