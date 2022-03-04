@@ -35,6 +35,7 @@ import {
     broadcastCosmosTransaction,
     broadcastEIP712Transaction,
 } from '../utils/blockchain/broadcast';
+import { fromHexString } from '@hanchon/signature-to-pubkey';
 
 export async function executeMsgSend(
     dest: string,
@@ -111,41 +112,104 @@ export async function executeMsgSend(
         if (ethWallet == null) {
             return;
         }
-        let signature = '';
-        try {
-            signature = await window.ethereum.request({
-                method: 'eth_signTypedData_v4',
-                params: [ethWallet, JSON.stringify(res.eipToSign)],
-            });
-        } catch (e) {
-            fireError('Metamask', 'Metamask error!');
-            return;
-        }
+        // let signature = '';
+        // try {
+        //     signature = await window.ethereum.request({
+        //         method: 'eth_signTypedData_v4',
+        //         params: [ethWallet, JSON.stringify(res.eipToSign)],
+        //     });
+        // } catch (e) {
+        //     fireError('Metamask', 'Metamask error!');
+        //     return;
+        // }
 
-        await broadcastEIP712Transaction(chain, sender, signature, res);
+        let signature = await window.ethereum.request({
+            method: 'eth_sign',
+            params: [
+                ethWallet,
+                '0x' +
+                    Buffer.from(res.signDirect.signBytes, 'base64').toString(
+                        'hex'
+                    ),
+            ],
+        });
+        // to sign 0x2638ccb8776a5e078234ab6f3d5c720a43dcf3c44db2319abcde855e10630f86
+
+        console.log(signature);
+        console.log(res.signDirect.body.serializeBinary().toString('base64'));
+        console.log(
+            res.signDirect.authInfo.serializeBinary().toString('base64')
+        );
+        let signBytes = fromHexString(signature.split('0x')[1]);
+        console.log(signBytes);
+        console.log(signBytes.toString('hex'));
+        // return {
+        //     signature: Buffer.from(signBytes).toString('base64'),
+        //     authBytes: data.authInfoBytes,
+        //     bodyBytes: data.bodyBytes,
+        // };
+
+        // await broadcastEIP712Transaction(chain, sender, signature, res);
         return;
     }
-    // if (isKeplr()) {
-    //     let sign = await window.keplr.signDirect(
-    //         chain.cosmosChainId,
-    //         sender.accountAddress,
-    //         {
-    //             bodyBytes: res.signDirect.body.serializeBinary(),
-    //             authInfoBytes: res.signDirect.authInfo.serializeBinary(),
-    //             chainId: chain.cosmosChainId,
-    //             accountNumber: sender.accountNumber,
-    //         },
-    //         { isEthereum: true }
-    //     );
+    if (isKeplr()) {
+        let bodyTemp = new Uint8Array([
+            10, 137, 1, 10, 28, 47, 99, 111, 115, 109, 111, 115, 46, 98, 97,
+            110, 107, 46, 118, 49, 98, 101, 116, 97, 49, 46, 77, 115, 103, 83,
+            101, 110, 100, 18, 105, 10, 44, 101, 118, 109, 111, 115, 49, 117,
+            57, 56, 57, 120, 53, 120, 52, 118, 113, 114, 107, 114, 121, 106, 56,
+            118, 53, 52, 57, 121, 118, 120, 112, 102, 51, 121, 102, 103, 57,
+            110, 120, 51, 114, 97, 99, 113, 110, 18, 44, 101, 118, 109, 111,
+            115, 49, 117, 57, 56, 57, 120, 53, 120, 52, 118, 113, 114, 107, 114,
+            121, 106, 56, 118, 53, 52, 57, 121, 118, 120, 112, 102, 51, 121,
+            102, 103, 57, 110, 120, 51, 114, 97, 99, 113, 110, 26, 11, 10, 6,
+            97, 101, 118, 109, 111, 115, 18, 1, 49,
+        ]);
+        let authInfoTemp = new Uint8Array([
+            10, 89, 10, 79, 10, 40, 47, 101, 116, 104, 101, 114, 109, 105, 110,
+            116, 46, 99, 114, 121, 112, 116, 111, 46, 118, 49, 46, 101, 116,
+            104, 115, 101, 99, 112, 50, 53, 54, 107, 49, 46, 80, 117, 98, 75,
+            101, 121, 18, 35, 10, 33, 3, 35, 176, 243, 234, 59, 57, 113, 76,
+            187, 245, 28, 112, 22, 212, 125, 48, 122, 201, 13, 35, 203, 161, 15,
+            16, 93, 212, 18, 36, 111, 155, 35, 73, 18, 4, 10, 2, 8, 1, 24, 0,
+            18, 18, 10, 12, 10, 6, 97, 101, 118, 109, 111, 115, 18, 2, 50, 48,
+            16, 192, 154, 12,
+        ]);
 
-    //     console.log(sign)
-    //     console.log(sign.signature.signature)
-    //     let converted = Buffer.from(sign.signature.signature, 'base64')
-    //     console.log(converted)
+        console.log('validation');
+        console.log(res.signDirect.body.serializeBinary());
+        console.log(
+            bodyTemp.toString('hex') ==
+                res.signDirect.body.serializeBinary().toString('hex')
+        );
+        console.log(
+            authInfoTemp.toString('hex') ==
+                res.signDirect.authInfo.serializeBinary().toString('hex')
+        );
 
-    //     await broadcastCosmosTransaction(chain, sender, res.signDirect.body.serializeBinary(), res.signDirect.authInfo.serializeBinary(), Uint8Array.from(converted));
-    //     return;
-    // }
+        let sign = await window.keplr.signDirect(
+            chain.cosmosChainId,
+            sender.accountAddress,
+            {
+                bodyBytes: res.signDirect.body.serializeBinary(),
+                authInfoBytes: res.signDirect.authInfo.serializeBinary(),
+                chainId: chain.cosmosChainId,
+                accountNumber: sender.accountNumber,
+            },
+            { isEthereum: true }
+        );
+
+        console.log(sign);
+        console.log(sign.signature.signature);
+        // BvrK/79tepjR9UftSH+Fl/kaI2yky4ZO0afoGuWOhVpZbhCYC+UIViU34oIPvNu50DVHUqDCLCJwXcKIsvPvuw==
+
+        let converted = Buffer.from(sign.signature.signature, 'base64');
+        console.log(converted.toString('hex'));
+        // 06facaffbf6d7a98d1f547ed487f8597f91a236ca4cb864ed1a7e81ae58e855a596e10980be508562537e2820fbcdbb9d0354752a0c22c22705dc288b2f3efbb
+
+        // await broadcastCosmosTransaction(chain, sender, res.signDirect.body.serializeBinary(), res.signDirect.authInfo.serializeBinary(), Uint8Array.from(converted));
+        return;
+    }
 }
 
 // import { createTxIBCMsgTransfer } from '@tharsis/transactions';

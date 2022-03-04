@@ -590,7 +590,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                                     </Text>
                                 </HStack>
                             </MenuItem>
-                            {/* <MenuItem id="mitemmetakeplr">
+                            <MenuItem id="mitemmetakeplr">
                                 <HStack
                                     id="mitemmetakeplrhstack"
                                     onClick={async () => {
@@ -600,7 +600,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                                     <ArrowUpIcon />
                                     <Text>Connect with Keplr</Text>
                                 </HStack>
-                            </MenuItem> */}
+                            </MenuItem>
                             <MenuDivider />
                             <MenuItem id="mitemlogout">
                                 <HStack id="mitemlogouthstack">
