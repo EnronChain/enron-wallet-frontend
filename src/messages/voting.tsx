@@ -77,7 +77,7 @@ export async function executeMsgVote(
     }
 
     if (feeDenom == '') {
-        feeDenom = 'aechelon';
+        feeDenom = 'aenron';
     }
 
     if (feeGas == '') {
@@ -189,7 +189,7 @@ const Voting = () => {
                                 Fee Denom(optional)
                             </FormLabel>
                             <Input
-                                placeholder="aechelon"
+                                placeholder="aenron"
                                 type="text"
                                 onChange={(e) => setFeeDenom(e.target.value)}
                             />

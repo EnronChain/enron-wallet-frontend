@@ -9,11 +9,11 @@ import {
     setMetamask,
     setPubKey,
     setWalletEth,
-    setWalletEchelon,
+    setWalletEnron,
     unsetProvider,
     unsetPubKey,
     unsetWalletEth,
-    unsetWalletEchelon,
+    unsetWalletEnron,
 } from './db';
 import { store } from './state';
 import { disconnectWallet, queryBalances } from './wallet';
@@ -75,11 +75,11 @@ export async function handleAccountsChanged(
         type: 'wallet',
         payload: {
             walletEth: accounts[0],
-            walletEchelon: ethToEchelon(accounts[0]),
+            walletEnron: ethToEchelon(accounts[0]),
         },
     });
     setWalletEth(accounts[0]);
-    setWalletEchelon(ethToEchelon(accounts[0]));
+    setWalletEnron(ethToEchelon(accounts[0]));
     if (account == getWalletEth()) {
         if (pubkeyDb !== null) {
             state.dispatch({ type: 'pubkey', payload: { pubkey: pubkeyDb } });
@@ -98,7 +98,7 @@ export async function handleAccountsChanged(
     setPubKey(pubkey);
     await queryBalances(state);
 
-    fireSuccess('Logged in with Metamask', 'You can now start using wallet.ech.network!');
+    fireSuccess('Logged in with Metamask', 'You can now start using wallet.enron.network!');
 }
 
 export async function signCosmosTransaction(wallet: string, data: any) {

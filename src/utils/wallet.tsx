@@ -3,24 +3,24 @@ import React from 'react';
 
 import { useContext, useEffect } from 'react';
 import { getAllERC20Balances } from './backend';
-import { echelonPubKey, getRewards } from './blockchain/account';
+import { enronPubKey, getRewards } from './blockchain/account';
 import { getAllBalances } from './blockchain/balances';
 import {
     getProvider,
     getPubKey,
     getWalletEth,
-    getWalletEchelon,
+    getWalletEnron,
     unsetProvider,
     setPubKey,
     unsetPubKey,
     unsetWalletEth,
-    unsetWalletEchelon,
+    unsetWalletEnron,
 } from './db';
 import { BalanceCosmos, GlobalState, store, BalanceERC20Item } from './state';
 
 export function disconnectWallet(state: GlobalState) {
     unsetWalletEth();
-    unsetWalletEchelon();
+    unsetWalletEnron();
     unsetPubKey();
     unsetProvider();
     state.dispatch({ type: 'cleanup', payload: {} });
@@ -30,14 +30,14 @@ export function disconnectWallet(state: GlobalState) {
 export async function reconnectWallet(state: GlobalState) {
     const walletEth = getWalletEth();
     if (walletEth !== null) {
-        const walletEchelon = getWalletEchelon();
+        const walletEnron = getWalletEnron();
         const pubkey = getPubKey();
         const provider = getProvider();
         state.dispatch({
             type: 'wallet',
             payload: {
                 walletEth: walletEth,
-                walletEchelon: walletEchelon,
+                walletEnron: walletEnron,
             },
         });
         state.dispatch({ type: 'pubkey', payload: { pubkey } });
@@ -47,12 +47,12 @@ export async function reconnectWallet(state: GlobalState) {
 }
 
 export async function queryBalances(store: GlobalState) {
-    const wallet = getWalletEchelon();
+    const wallet = getWalletEnron();
     let balance: BalanceCosmos[] = [];
     var rewards;
     if (wallet !== null) {
         balance = await getAllBalances(wallet);
-        // var pubkey = await echelonPubKey(wallet);
+        // var pubkey = await enronPubKey(wallet);
         rewards = await getRewards();
         console.log(rewards);
         // setPubKey(pubkey);

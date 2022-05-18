@@ -21,7 +21,7 @@ import {
     callProposalRegisterErc20,
     callConvertErc20,
 } from '../utils/backend';
-import { getWalletEth, getWalletEchelon } from '../utils/db';
+import { getWalletEth, getWalletEnron } from '../utils/db';
 
 export async function executeConvertERC20(
     contract: string,
@@ -46,7 +46,7 @@ export async function executeConvertERC20(
         fireError('Convert ERC20', 'Invalid amount!');
         return false;
     }
-    const myWallet = getWalletEchelon();
+    const myWallet = getWalletEnron();
     if (myWallet === null) {
         fireError('Convert ERC20', 'Invalid wallet!');
         return false;

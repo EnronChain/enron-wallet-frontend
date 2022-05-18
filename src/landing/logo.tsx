@@ -5,7 +5,7 @@ const Logo = () => {
     return (
         <VStack w="full" h="full" spacing={1} justify="center">
             <Center>
-                <Heading fontSize="6xl">Echelon</Heading>
+                <Heading fontSize="6xl">Enron</Heading>
             </Center>
             <Center>
                 <Text fontSize="xl">Your all in one ECH wallet</Text>

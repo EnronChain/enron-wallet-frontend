@@ -54,7 +54,7 @@ function WalletGrid() {
             <GeneralCards
                 key={'convert address'}
                 name={'Convert address'}
-                role={`Converter between 0x and bech32(echelon1) addresses.`}
+                role={`Converter between 0x and bech32(enron1) addresses.`}
                 content={[<ConvertAddress key="convertAddress" />]}
                 iconComponents={[
                     <MessagesIcon

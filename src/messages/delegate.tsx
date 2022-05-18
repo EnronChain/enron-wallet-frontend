@@ -29,20 +29,20 @@ async function execute(
     feeDenom: string,
     feeGas: string
 ) {
-    if (dest.split('echelonvaloper1').length != 2) {
-        fireError('Delegate Aechelon', 'Invalid destination!');
+    if (dest.split('enronvaloper1').length != 2) {
+        fireError('Delegate Aenron', 'Invalid destination!');
         return false;
     }
 
     let parsedAmount = Number(amount);
     if (parsedAmount === NaN) {
-        fireError('Delegate Aechelon', 'Invalid amount!');
+        fireError('Delegate Aenron', 'Invalid amount!');
         return false;
     }
 
     if (parsedAmount < 100000000000000) {
         fireError(
-            'Delegate Aechelon',
+            'Delegate Aenron',
             'Invalid amount, minimum value is 100000000000000!'
         );
         return false;
@@ -57,7 +57,7 @@ async function execute(
     }
 
     if (feeDenom == '') {
-        feeDenom = 'aechelon';
+        feeDenom = 'aenron';
     }
 
     if (feeGas == '') {
@@ -78,7 +78,7 @@ async function execute(
     let res = await createTxMsgDelegate(chain, sender, fee, memo, {
         validatorAddress: dest,
         amount: amount,
-        denom: 'aechelon',
+        denom: 'aenron',
     });
 
     return signCosmosAndBroadcastWithMetamask(chain, sender, res);
@@ -101,14 +101,14 @@ const DelegateAphotons = () => {
             border="1px"
             borderRadius={25}
         >
-            <Heading size="md">Delegate Aechelon</Heading>
+            <Heading size="md">Delegate Aenron</Heading>
             <Divider />
             <SimpleGrid columns={1} columnGap={3} rowGap={6} w="full">
                 <GridItem colSpan={[1, 2]}>
                     <FormControl id="destDelegateControl">
                         <FormLabel id="destDelegate">Destination</FormLabel>
                         <Input
-                            placeholder="echelonvaloper1t703ccll8shpkhwnvmtu5nzrvcaw52u8an2708"
+                            placeholder="enronvaloper1t703ccll8shpkhwnvmtu5nzrvcaw52u8an2708"
                             type="text"
                             onChange={(e) => setDest(e.target.value)}
                         />
@@ -117,7 +117,7 @@ const DelegateAphotons = () => {
                 <GridItem colSpan={[1, 2]}>
                     <FormControl id="amountDelegateControl">
                         <FormLabel id="amountDelegate">
-                            Amount (Aechelon)
+                            Amount (Aenron)
                         </FormLabel>
                         <Input
                             placeholder="1000000000000"
@@ -156,7 +156,7 @@ const DelegateAphotons = () => {
                     <FormControl id="memoSendControl">
                         <FormLabel id="memoSend">Fee Denom(optional)</FormLabel>
                         <Input
-                            placeholder="aechelon"
+                            placeholder="aenron"
                             type="text"
                             onChange={(e) => setFeeDenom(e.target.value)}
                         />

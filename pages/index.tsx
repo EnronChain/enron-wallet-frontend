@@ -35,7 +35,7 @@ export default function CallToActionWithAnnotation() {
                             fontSize={{ base: '4xl', sm: '4xl', md: '6xl' }}
                             lineHeight={'110%'}
                         >
-                            wallet.ech.network <br />
+                            wallet.enron.network <br />
                             <Text
                                 as={'span'}
                                 color={'yellow.400'}
@@ -93,7 +93,7 @@ export default function CallToActionWithAnnotation() {
                                     top={['88px', '-15px']}
                                     transform={['', 'rotate(10deg)']}
                                 >
-                                    Start using echelon!
+                                    Start using enron!
                                 </Text>
                             </Box>
                         </Stack>

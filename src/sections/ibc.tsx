@@ -30,7 +30,7 @@ function TransactionsSubtitle() {
                     <Strong content={'IBC Transfers'} />
                     {'  transaction.'}
                     <br />
-                    {'Move your echelon coins to another '}
+                    {'Move your enron coins to another '}
                     <Strong content={'chain'} />
                     {'.'}
                 </>
@@ -70,7 +70,7 @@ function SendGrid() {
                 <GeneralCards
                     key={'send photons'}
                     name={'IBC Transfer'}
-                    role={`Send echelon coins to any address.`}
+                    role={`Send enron coins to any address.`}
                     content={[<IBCTransfer key="msgsendcontent" />]}
                     iconComponents={[
                         <MessagesIcon

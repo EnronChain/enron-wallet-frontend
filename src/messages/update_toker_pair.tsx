@@ -23,7 +23,7 @@ import {
     callToggleToken,
     callUpdateTokenPair,
 } from '../utils/backend';
-import { getWalletEth, getWalletEchelon } from '../utils/db';
+import { getWalletEth, getWalletEnron } from '../utils/db';
 
 export async function executeUpdateTokenPair(
     token: string,
@@ -47,7 +47,7 @@ export async function executeUpdateTokenPair(
     if (gasLimit == '') {
         gasLimit = '1000000';
     }
-    const myWallet = getWalletEchelon();
+    const myWallet = getWalletEnron();
     if (myWallet === null) {
         fireError('Toggle Token', 'Invalid wallet!');
         return false;

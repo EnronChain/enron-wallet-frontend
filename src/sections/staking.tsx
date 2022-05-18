@@ -50,9 +50,9 @@ function ValidatorGrid() {
                 Staking & Delegation
             </chakra.h1>
 
-            <p>You may find an Echelon validator address (echelonvaloper1...) to stake aka delegate to from <a href="https://ping.pub/echelon/staking" target="_blank">Ping.pub</a>
+            <p>You may find an Enron validator address (enronvaloper1...) to stake aka delegate to from <a href="https://ping.pub/enron/staking" target="_blank">Ping.pub</a>
             <br />
-            1000000000000000000 aechelon = 1 ECH
+            1000000000000000000 aenron = 1 ECH
             </p><br />
 
             <SimpleGrid
@@ -81,7 +81,7 @@ function ValidatorGrid() {
                 <GeneralCards
                     key={'delegate'}
                     name={'Delegate'}
-                    role="Delegate your aechelons to a validator"
+                    role="Delegate your aenrons to a validator"
                     content={[<DelegateAphotons key="delegatecontent" />]}
                     iconComponents={[
                         <MessagesIcon
@@ -94,7 +94,7 @@ function ValidatorGrid() {
                 <GeneralCards
                     key={'undelegate'}
                     name={'Undelegate'}
-                    role="Undelegate your aechelons."
+                    role="Undelegate your aenrons."
                     content={[<UndelegateAphotons key="undelegatecontent" />]}
                     iconComponents={[
                         <MessagesIcon

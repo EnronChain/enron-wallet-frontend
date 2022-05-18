@@ -19,8 +19,8 @@ const Footer = () => {
             id="footerbox"
         >
             <HStack justifyContent="flex-end">
-                <span>Echelon Wallet Dapp</span>
-                <Link href="https://github.com/echelonfoundation/echelon-wallet-frontend">
+                <span>Enron Wallet Dapp</span>
+                <Link href="https://github.com/enronfoundation/enron-wallet-frontend">
                     <FaGithub
                         size="30px"
                         color={useColorModeValue('black', 'white')}

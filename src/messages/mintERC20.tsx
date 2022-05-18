@@ -41,7 +41,7 @@ export async function executeMintERC20(
         return false;
     }
 
-    if (destination.split('echelon1').length == 2) {
+    if (destination.split('enron1').length == 2) {
         destination = echelonToEth(destination);
     } else if (destination.split('0x').length != 2) {
         fireError('Mint ERC20', 'Invalid Contract!');
@@ -107,7 +107,7 @@ const MintERC20 = () => {
                     <FormControl id="destSendControl">
                         <FormLabel id="destSend">Destination address</FormLabel>
                         <Input
-                            placeholder="0x../echelon1..."
+                            placeholder="0x../enron1..."
                             type="text"
                             onChange={(e) => setDestination(e.target.value)}
                         />

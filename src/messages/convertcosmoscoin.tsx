@@ -22,7 +22,7 @@ import {
     callConvertErc20,
     callConvertCoin,
 } from '../utils/backend';
-import { getWalletEth, getWalletEchelon } from '../utils/db';
+import { getWalletEth, getWalletEnron } from '../utils/db';
 
 export async function executeConvertCoin(
     denom: string,
@@ -36,7 +36,7 @@ export async function executeConvertCoin(
     if (gasLimit == '') {
         gasLimit = '1000000';
     }
-    const myWallet = getWalletEchelon();
+    const myWallet = getWalletEnron();
     if (myWallet === null) {
         fireError('Convert Coin', 'Invalid wallet!');
         return false;

@@ -22,7 +22,7 @@ import {
     callConvertErc20,
     callToggleToken,
 } from '../utils/backend';
-import { getWalletEth, getWalletEchelon } from '../utils/db';
+import { getWalletEth, getWalletEnron } from '../utils/db';
 
 export async function executeToggleToken(
     token: string,
@@ -46,7 +46,7 @@ export async function executeToggleToken(
         gasLimit = '1000000';
     }
 
-    const myWallet = getWalletEchelon();
+    const myWallet = getWalletEnron();
     if (myWallet === null) {
         fireError('Toggle Token', 'Invalid wallet!');
         return false;

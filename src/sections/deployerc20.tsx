@@ -36,7 +36,7 @@ function ERC20Subtitle() {
                     <Strong content={'ERC20'} />
                     {' helper.'}
                     <br />
-                    {'Transfer an ERC20 token to another echelon account!'}
+                    {'Transfer an ERC20 token to another enron account!'}
                     {'.'}
                 </>
             }

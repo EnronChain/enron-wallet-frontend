@@ -47,7 +47,7 @@ export async function executeMsgSend(
     feeGas: string
 ) {
     if (denom == '') {
-        denom = 'aechelon';
+        denom = 'aenron';
     }
 
     if (feeAmount == '') {
@@ -59,7 +59,7 @@ export async function executeMsgSend(
     }
 
     if (feeDenom == '') {
-        feeDenom = 'aechelon';
+        feeDenom = 'aenron';
     }
 
     if (feeGas == '') {
@@ -70,7 +70,7 @@ export async function executeMsgSend(
         return false;
     }
 
-    if (dest.split('echelon').length != 2) {
+    if (dest.split('enron').length != 2) {
         if (dest.split('0x').length == 2) {
             dest = ethToEchelon(dest);
         } else {
@@ -140,7 +140,7 @@ export async function executeMsgSend(
 
 //     const fee = {
 //         amount: '20',
-//         denom: 'aechelon',
+//         denom: 'aenron',
 //         gas: '200000',
 //     };
 
@@ -155,7 +155,7 @@ export async function executeMsgSend(
 //             sourceChannel: 'channel-0',
 //             // Token
 //             amount: '10000',
-//             denom: 'aechelon',
+//             denom: 'aenron',
 //             // Addresses
 //             receiver: 'osmo1pmk2r32ssqwps42y3c9d4clqlca403yd05x9ye',
 //             // Timeout
@@ -214,7 +214,7 @@ const MsgSend = () => {
                         <FormControl id="destSendControl">
                             <FormLabel id="destSend">Destination</FormLabel>
                             <Input
-                                placeholder="0x.. or echelon1..."
+                                placeholder="0x.. or enron1..."
                                 type="text"
                                 onChange={(e) => setDest(e.target.value)}
                             />
@@ -234,7 +234,7 @@ const MsgSend = () => {
                         <FormControl id="denomSendControl">
                             <FormLabel id="denomSend">Coin(Optional)</FormLabel>
                             <Input
-                                placeholder="aechelon"
+                                placeholder="aenron"
                                 type="text"
                                 onChange={(e) => setDenom(e.target.value)}
                             ></Input>
@@ -271,7 +271,7 @@ const MsgSend = () => {
                                 Fee Denom(optional)
                             </FormLabel>
                             <Input
-                                placeholder="aechelon"
+                                placeholder="aenron"
                                 type="text"
                                 onChange={(e) => setFeeDenom(e.target.value)}
                             />
@@ -333,7 +333,7 @@ const MsgSend = () => {
                         <FormControl id="destSendControl">
                             <FormLabel id="destSend">Destination</FormLabel>
                             <Input
-                                placeholder="0x.. or echelon1..."
+                                placeholder="0x.. or enron1..."
                                 type="text"
                                 onChange={(e) => setDest(e.target.value)}
                             />

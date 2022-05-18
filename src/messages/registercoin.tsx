@@ -137,7 +137,7 @@ const RegisterCoin = () => {
                             Denomination description
                         </FormLabel>
                         <Input
-                            placeholder="this is the base coin for echelon"
+                            placeholder="this is the base coin for enron"
                             type="text"
                             onChange={(e) => setDescription(e.target.value)}
                         />

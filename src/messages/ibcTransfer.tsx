@@ -100,7 +100,7 @@ export async function executeIBCTransfer(
     }
 
     if (denom == '') {
-        denom = 'aechelon';
+        denom = 'aenron';
     }
 
     if (feeAmount == '') {
@@ -120,7 +120,7 @@ export async function executeIBCTransfer(
     }
 
     if (feeDenom == '') {
-        feeDenom = 'aechelon';
+        feeDenom = 'aenron';
     }
 
     if (feeGas == '') {
@@ -249,7 +249,7 @@ const IBCTransfer = () => {
                         <FormControl id="denomSendControl">
                             <FormLabel id="denomSend">Coin(Optional)</FormLabel>
                             <Input
-                                placeholder="aechelon"
+                                placeholder="aenron"
                                 type="text"
                                 onChange={(e) => setDenom(e.target.value)}
                             ></Input>
@@ -363,7 +363,7 @@ const IBCTransfer = () => {
                                 Fee Denom(optional)
                             </FormLabel>
                             <Input
-                                placeholder="aechelon"
+                                placeholder="aenron"
                                 type="text"
                                 onChange={(e) => setFeeDenom(e.target.value)}
                             />

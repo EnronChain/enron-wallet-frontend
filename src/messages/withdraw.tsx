@@ -28,8 +28,8 @@ async function execute(
     feeDenom: string,
     feeGas: string
 ) {
-    if (dest.split('echelonvaloper1').length != 2) {
-        fireError('Withdraw Aechelon', 'Invalid source!');
+    if (dest.split('enronvaloper1').length != 2) {
+        fireError('Withdraw Aenron', 'Invalid source!');
         return false;
     }
 
@@ -42,7 +42,7 @@ async function execute(
     }
 
     if (feeDenom == '') {
-        feeDenom = 'aechelon';
+        feeDenom = 'aenron';
     }
 
     if (feeGas == '') {
@@ -89,7 +89,7 @@ const WithdrawAphotons = () => {
                     <FormControl id="destDelegateControl">
                         <FormLabel id="destDelegate">Source</FormLabel>
                         <Input
-                            placeholder="echelonvaloper1t703ccll8shpkhwnvmtu5nzrvcaw52u8an2708"
+                            placeholder="enronvaloper1t703ccll8shpkhwnvmtu5nzrvcaw52u8an2708"
                             type="text"
                             onChange={(e) => setDest(e.target.value)}
                         />
@@ -125,7 +125,7 @@ const WithdrawAphotons = () => {
                     <FormControl id="memoSendControl">
                         <FormLabel id="memoSend">Fee Denom(optional)</FormLabel>
                         <Input
-                            placeholder="aechelon"
+                            placeholder="aenron"
                             type="text"
                             onChange={(e) => setFeeDenom(e.target.value)}
                         />

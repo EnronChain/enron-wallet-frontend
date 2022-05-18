@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <ChakraProvider theme={theme}>
             <StateProvider>
                 <Head>
-                    <title>Echelon Wallet</title>
+                    <title>Enron Wallet</title>
                 </Head>
                 <WalletInitializer />
                 <Component {...pageProps} />

@@ -1,6 +1,6 @@
-# wallet.ech.network Frontend
+# wallet.enron.network Frontend
 
-Wallet Metamask Integration with Echelon Native Cosmos Chain
+Wallet Metamask Integration with Enron Native Cosmos Chain
 
 ## Requirements
 -   NodeJs

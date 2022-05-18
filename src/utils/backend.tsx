@@ -7,7 +7,7 @@ import { ethers } from 'ethers';
 import {
     getPubKey,
     getWalletEth,
-    getWalletEchelon,
+    getWalletEnron,
     isKeplr,
     isMetamask,
 } from './db';
@@ -21,7 +21,7 @@ import { signCosmosTransaction } from './metamask';
 //     generateTypes,
 //     createMsgSend,
 //     msgSendTypes,
-// } from '@tharsis/echelonjs/packages/eip712';
+// } from '@tharsis/enronjs/packages/eip712';
 
 // import {
 //     createMsgSend as protoMsgSend,
@@ -32,7 +32,7 @@ import { signCosmosTransaction } from './metamask';
 //     createSigDoc,
 //     createTransaction,
 //     LEGACY_AMINO,
-// } from '@tharsis/echelonjs/packages/proto';
+// } from '@tharsis/enronjs/packages/proto';
 import { Keccak } from 'sha3';
 
 export async function getAllBalances(address: string) {
@@ -57,7 +57,7 @@ export async function getAllERC20Balances(address: string) {
     if (address === null) {
         return { balances: [] };
     }
-    if (address.split('echelon1').length == 2) {
+    if (address.split('enron1').length == 2) {
         address = echelonToEth(address);
     }
     const pubresp = await fetch(
@@ -83,7 +83,7 @@ export async function createERC20Contract(
 ) {
     const body = JSON.stringify({
         wallet: {
-            address: getWalletEchelon(),
+            address: getWalletEnron(),
             algo: 'ethsecp256k1',
             pubkey: getPubKey(),
         },
@@ -116,10 +116,10 @@ export async function createERC20Transfer(
     gas: string,
     gasPrice: string
 ) {
-    if (sender.split('echelon1').length == 2) {
+    if (sender.split('enron1').length == 2) {
         sender = echelonToEth(sender);
     }
-    if (destination.split('echelon1').length == 2) {
+    if (destination.split('enron1').length == 2) {
         destination = echelonToEth(destination);
     }
     const pubresp = await fetch(
@@ -147,7 +147,7 @@ export async function generatePublicKey(address: string) {
     if (address.split('0x').length == 2) {
         address = ethToEchelon(address);
     }
-    const pubresp = await echelonPubKey(address);
+    const pubresp = await enronPubKey(address);
     return pubresp;
 }
 
@@ -194,7 +194,7 @@ export async function callMintErc20(
         },
         body: JSON.stringify({
             wallet: {
-                address: getWalletEchelon(),
+                address: getWalletEnron(),
                 algo: algo,
                 pubkey: getPubKey(),
             },
@@ -229,7 +229,7 @@ export async function callConvertCoin(
         },
         body: JSON.stringify({
             wallet: {
-                address: getWalletEchelon(),
+                address: getWalletEnron(),
                 algo: algo,
                 pubkey: getPubKey(),
             },
@@ -272,7 +272,7 @@ export async function callUpdateTokenPair(
         },
         body: JSON.stringify({
             wallet: {
-                address: getWalletEchelon(),
+                address: getWalletEnron(),
                 algo: algo,
                 pubkey: getPubKey(),
             },
@@ -314,7 +314,7 @@ export async function callToggleToken(
         },
         body: JSON.stringify({
             wallet: {
-                address: getWalletEchelon(),
+                address: getWalletEnron(),
                 algo: algo,
                 pubkey: getPubKey(),
             },
@@ -356,7 +356,7 @@ export async function callConvertErc20(
         },
         body: JSON.stringify({
             wallet: {
-                address: getWalletEchelon(),
+                address: getWalletEnron(),
                 algo: algo,
                 pubkey: getPubKey(),
             },
@@ -411,7 +411,7 @@ export async function callProposalRegisterCoin(
             },
             body: JSON.stringify({
                 wallet: {
-                    address: getWalletEchelon(),
+                    address: getWalletEnron(),
                     algo: algo,
                     pubkey: getPubKey(),
                 },
@@ -464,7 +464,7 @@ export async function callProposalRegisterErc20(
             },
             body: JSON.stringify({
                 wallet: {
-                    address: getWalletEchelon(),
+                    address: getWalletEnron(),
                     algo: algo,
                     pubkey: getPubKey(),
                 },
@@ -525,7 +525,7 @@ import {
 } from '@tharsis/eip712';
 
 import { accountEndpoint } from '@tharsis/provider';
-import { echelonPubKey, getAccount } from './blockchain/account';
+import { enronPubKey, getAccount } from './blockchain/account';
 import { getAddress } from 'ethers/lib/utils';
 export async function callSendAphoton(
     dest: string,
@@ -534,7 +534,7 @@ export async function callSendAphoton(
     memo: string
 ) {
     return;
-    // const sender = getWalletEchelon();
+    // const sender = getWalletEnron();
     // if (sender == null) {
     //     return;
     // }
@@ -565,7 +565,7 @@ export async function callSendAphoton(
     // // Get account data
     // const accountId = parseInt(values.account.base_account.account_number);
     // const sequence = parseInt(values.account.base_account.sequence);
-    // const chainIdCosmos = 'echelon_9000-1';
+    // const chainIdCosmos = 'enron_9000-1';
     // const chainId = 9000;
 
     // // EIP712
@@ -667,7 +667,7 @@ export async function callSendAphoton(
     // //     },
     // //     body: JSON.stringify({
     // //         wallet: {
-    // //             address: getWalletEchelon(),
+    // //             address: getWalletEnron(),
     // //             algo: algo,
     // //             pubkey: getPubKey(),
     // //         },
@@ -807,7 +807,7 @@ export async function callSendAphoton(
     // //     createAuthInfo,
     // //     createSigDoc,
     // //     createTransaction,
-    // // } from '@tharsis/echelonjs/packages/proto'
+    // // } from '@tharsis/enronjs/packages/proto'
 
     // // let msg2 = protoMsgSend(
     // //     'ethm1tfegf50n5xl0hd5cxfzjca3ylsfpg0fned5gqm',
@@ -935,7 +935,7 @@ export async function undelegateAphoton(dest: string, amount: string) {
         },
         body: JSON.stringify({
             wallet: {
-                address: getWalletEchelon(),
+                address: getWalletEnron(),
                 algo: algo,
                 pubkey: getPubKey(),
             },
@@ -968,7 +968,7 @@ export async function delegateAphoton(dest: string, amount: string) {
         },
         body: JSON.stringify({
             wallet: {
-                address: getWalletEchelon(),
+                address: getWalletEnron(),
                 algo: algo,
                 pubkey: getPubKey(),
             },
@@ -1024,7 +1024,7 @@ export function signTransaction(data: any) {
     }
 
     if (isKeplr()) {
-        let wallet = getWalletEchelon();
+        let wallet = getWalletEnron();
         if (wallet === null) {
             return null;
         }

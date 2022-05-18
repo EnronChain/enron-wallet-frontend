@@ -136,7 +136,7 @@ const SidebarContent = ({ onClose, currentSection, ...rest }: SidebarProps) => {
     return (
         <Box
             bg={useColorModeValue('white', 'gray.900')}
-            borderRight="1px"
+            borderRight="0px"
             borderRightColor={useColorModeValue('gray.200', 'gray.700')}
             w={{ base: 'full', md: 60 }}
             pos="fixed"
@@ -154,8 +154,8 @@ const SidebarContent = ({ onClose, currentSection, ...rest }: SidebarProps) => {
                         <Image
                             bg="transparent"
                             src={useColorModeValue(
-                                './echelon.gif',
-                                './echelon.gif'
+                                './enron.png',
+                                './enron.png'
                             )}
                         />
                     </Box>
@@ -168,7 +168,7 @@ const SidebarContent = ({ onClose, currentSection, ...rest }: SidebarProps) => {
                         fontFamily="var(--chakra-fonts-heading)"
                         fontWeight="bold"
                     >
-                        Echelon
+                        Enron
                     </Text>
                 </HStack>
                 <CloseButton
@@ -214,7 +214,7 @@ const SidebarContent = ({ onClose, currentSection, ...rest }: SidebarProps) => {
                     link={'/cosmos'}
                     currentselected={currentSection}
                 >
-                    {'Echelon'}
+                    {'Enron'}
                 </NavItem>
 
                 {/* <NavItem
@@ -373,7 +373,7 @@ const SidebarContent = ({ onClose, currentSection, ...rest }: SidebarProps) => {
                     ml={10}
                     key={'Bridge'}
                     icon={SiJfrogbintray}
-                    link={'https://bridge.ech.network'}
+                    link={'https://bridge.enron.network'}
                     currentselected={currentSection}
                 >
                     {'Bridge'}
@@ -384,7 +384,7 @@ const SidebarContent = ({ onClose, currentSection, ...rest }: SidebarProps) => {
                     ml={10}
                     key={'Explorer'}
                     icon={FaSearchPlus}
-                    link={'https://ping.pub/echelon'}
+                    link={'https://ping.pub/enron'}
                     currentselected={currentSection}
                 >
                     {'Explorer'}
@@ -538,7 +538,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                 fontFamily="var(--chakra-fonts-heading)"
                 fontWeight="bold"
             >
-                Echelon
+                Enron
             </Text>
 
             <HStack spacing={{ base: '0', md: '6' }} id="hstacksidebar">
@@ -575,8 +575,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                                                   'keplr'
                                                 ? './keplr.svg'
                                                 : useColorModeValue(
-                                                      './echelon.gif',
-                                                      './echelon.gif'
+                                                      './enron.png',
+                                                      './enron.png'
                                                   )
                                         }
                                     />

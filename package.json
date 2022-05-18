@@ -1,5 +1,5 @@
 {
-    "name": "echelon-wallet-frontend",
+    "name": "enron-wallet-frontend",
     "private": true,
     "scripts": {
         "dev": "next dev",

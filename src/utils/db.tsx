@@ -36,15 +36,15 @@ export function unsetWalletEth() {
     return localStorage.removeItem('walleteth');
 }
 
-export function getWalletEchelon() {
-    return localStorage.getItem('walletechelon');
+export function getWalletEnron() {
+    return localStorage.getItem('walletenron');
 }
-export function setWalletEchelon(wallet: string) {
-    return localStorage.setItem('walletechelon', wallet);
+export function setWalletEnron(wallet: string) {
+    return localStorage.setItem('walletenron', wallet);
 }
 
-export function unsetWalletEchelon() {
-    return localStorage.removeItem('walletechelon');
+export function unsetWalletEnron() {
+    return localStorage.removeItem('walletenron');
 }
 
 export function getPubKey() {

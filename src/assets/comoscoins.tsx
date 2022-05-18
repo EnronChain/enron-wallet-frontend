@@ -27,10 +27,10 @@ const CosmosCoins = () => {
         <Box h="auto">
             <Box w="full" p={5}>
                 <Heading size="lg" color="white" textAlign="center">
-                    Echelon Coins
+                    Enron Coins
                 </Heading>
                 <Text py={2} textAlign="center">
-                    All the registered Echelon Coins on wallet.ech.network
+                    All the registered Enron Coins on wallet.enron.network
                 </Text>
             </Box>
             <SimpleGrid

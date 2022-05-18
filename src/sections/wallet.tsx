@@ -42,19 +42,19 @@ function WalletIconFooter() {
 function WalletGrid() {
     const globalState = useContext(store);
 
-    const web3 = new Web3('https://draco.ech.network');
+    const web3 = new Web3('https://draco.enron.network');
 
     const data = [
         {
-            name: 'Echelon',
-            role: '(Bech32) Echelon encoded wallet',
+            name: 'Enron',
+            role: '(Bech32) Enron encoded wallet',
             content: [
                 <TextSpan
-                    content={globalState.state.walletEchelon}
+                    content={globalState.state.walletEnron}
                     key="evmotext"
                 />,
             ],
-            avatar: useColorModeValue('./echelon.gif', './echelon.gif'), // black and then white
+            avatar: useColorModeValue('./enron.png', './enron.png'), // black and then white
         },
         {
             name: 'Hex',
@@ -83,14 +83,14 @@ function WalletGrid() {
         },
         {
             name: 'Balance',
-            role: 'Current Echelon (ECH) coin balance',
+            role: 'Current Enron (ENR) coin balance',
             content: [
                 <TextSpan
-                    content={`≈${(globalState.state.aphoton/1e18).toString()} ECH`}
+                    content={`≈${(globalState.state.aphoton/1e18).toString()} ENR`}
                     key="balancetext"
                 />,
                 <TextSpan
-                content={`(${globalState.state.aphoton} aechelon)`}
+                content={`(${globalState.state.aphoton} aenron)`}
                 key="balancetext"
             />,
             ],
@@ -98,14 +98,14 @@ function WalletGrid() {
         },
         {
             name: 'Rewards',
-            role: 'Current Echelon (ECH) coin rewards',
+            role: 'Current Enron (ENR) coin rewards',
             content: [
                 <TextSpan
-                    content={`≈${(globalState.state.rewards/1e18).toString()} ECH`}
+                    content={`≈${(globalState.state.rewards/1e18).toString()} ENR`}
                     key="rewardstext"
                 />,
             //     <TextSpan
-            //     content={`(≈${globalState.state.rewards} aechelon)`}
+            //     content={`(≈${globalState.state.rewards} aenron)`}
             //     key="rewardstext"
             // />,
             ],
